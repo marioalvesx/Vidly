@@ -12,7 +12,13 @@ namespace Vidly.Controllers
                 Name = "Shrek!"
             };
 
-            return View();
+            return View(movie);
         }
+
+        public ActionResult Edit(int id)
+        {
+            return Content("id = " + id);
+        }
+
     }
 }
