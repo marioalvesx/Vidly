@@ -4,9 +4,9 @@ using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
-    public class MoviesController : Controller
+    public class MovieController : Controller
     {
-        public IActionResult Random()
+        public IActionResult Index()
         {
             var movie = new Movie()
             { Name = "Shrek!"};

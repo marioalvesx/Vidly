@@ -1,0 +1,78 @@
+﻿@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(35px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.animate-up {
+    transform: translateY(35px);
+    opacity: 0;
+    animation: up 200ms forwards;
+}
+
+/* Dashboard Menu Animation */
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #b84bcb;
+}
+
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+    background-color: #b84bcb;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+@keyframes pop {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+.animate-pop {
+    transform: scale(0);
+    opacity: 0;
+    animation: pop 300ms forwards;
+}
+
+.reverse {
+    animation-direction: reverse;
+}
+
+.back {
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.delay-1 {
+    animation-delay: 100ms;
+}
+
+.delay-2 {
+    animation-delay: 200ms;
+}

@@ -4,6 +4,7 @@
     --green: #49AA26;
     --light-green: #3dd705;
     --red: #e92929;
+    --white: #f0f2f5;
 }
 
 * {
@@ -21,6 +22,19 @@ body {
     font-family: 'Poppins', sans-serif
 }
 
+.container {
+    width: min(90vw, 1340px);
+    margin: auto;
+}
+
+/* Titles ===================== */
+h2 {
+    margin-top: 3.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-blue);
+    font-weight: normal;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -33,28 +47,15 @@ body {
     border-width: 0;
 }
 
-.container {
-    width: min(90vw, 800px);
-    margin: auto;
-}
-
-/* Titles ===================== */
-h2 {
-    margin-top: 3.2rem;
-    margin-bottom: 0.8rem;
-    color: var(--dark-blue);
-    font-weight: normal;
-}
-
 /* Links & Buttons ===================== */
 a {
     color: var(--green);
     text-decoration: none;
 }
 
-    a:hover {
-        color: var(--light-green);
-    }
+a:hover {
+    color: var(--light-green);
+}
 
 button {
     width: 100%;
@@ -67,9 +68,9 @@ button {
     cursor: pointer;
 }
 
-    button:hover {
-        background: var(--light-green);
-    }
+button:hover {
+    background: var(--light-green);
+}
 
 .button.new {
     display: inline-block;
@@ -94,13 +95,45 @@ button {
 /* Header ===================== */
 header {
     background: #4b1155;
-    padding: 2rem 0 10rem;
+    padding: 2rem 0 12rem;
     text-align: center;
 }
 
 #logo {
-    color: #fff;
-    font-weight: 100;
+    width: 13rem;
+    height: 3rem;
+}
+
+#top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-header {
+    width: min(81vw, 1440px);
+    margin: auto;
+}
+
+.page-selection {
+    line-height: 2.875rem;
+    margin-right: 2.50rem;    
+    gap: 29px;
+    display: flex;
+}
+
+.page-selection a {
+    color: var(--white);
+    opacity: 85%;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.page-selection a:hover {
+    color: var(--white);
+    opacity: 100%;
+    text-decoration: none;
+    font-weight: 500;
 }
 
 /* Balance ===================== */

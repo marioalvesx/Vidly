@@ -4,11 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Vidly</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/partials/animations.css" />    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    @*<header>
-        @Html.Partial("_NavBar")
-    </header>*@
+    <header>
+        <div class="container-header">
+            <section id="top" class="animate-up">                
+                <img id="logo" src="~/assets/logo.svg" alt="Logo Dev Finance">                
+                @Html.Partial("_NavBar")
+            </section>
+        </div>
+    </header>    
     <div>
         <main role="main" class="pb-3">
             @RenderBody()
