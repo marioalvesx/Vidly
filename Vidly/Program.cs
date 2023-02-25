@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Vidly.Persistence;
+
 namespace Vidly
 {
     public class Program
@@ -5,9 +8,14 @@ namespace Vidly
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var connectionString = builder.Configuration.GetConnectionString("Vidly");
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<VidlyDbContext>(
+                o => o.UseSqlServer(connectionString)    
+            ); // Configurar aqui connection string para o banco de dados.
 
             var app = builder.Build();
 
