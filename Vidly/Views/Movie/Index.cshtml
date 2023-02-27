@@ -1,4 +1,4 @@
-﻿@model Vidly.ViewModels.RandomMovieViewModel
+﻿@model IEnumerable<Vidly.Models.Movie>
 
 @{
     ViewData["Title"] = "Random";
@@ -54,27 +54,21 @@
                 <thead>
                     <tr>
                         <th>Movie Name</th>
-                        <th>Customer</th>
-                        <th>Date</th>
-                        <th></th>
+                        <th>Genre</th>                        
                     </tr>
                 </thead>
                 <tbody>
-                    @{
-                        var className = Model.Customers.Count > 5 ? "popular" : null;
-                    }
-
-                    @if(Model.Customers.Count == 0)
+                    @if(!Model.Any())
                     {
-                        <tr>No one has rented this movie before.</tr>
+                        <tr>There are no movies registered yet.</tr>
                     }
                     else
                     {
-                        @foreach (var customer in Model.Customers)
+                        @foreach (var movie in Model)
                         {
                             <tr>
-                                <td>@Model.Movie.Name</td>
-                                <td>@customer.Name</td>                         
+                                <td>@Html.ActionLink(@movie.Name, "Details", "Movie", new { id = movie.Id }, null)</td>
+                                <td>@movie.Genre.Name</td>
                             </tr>                        
                         }
                     }

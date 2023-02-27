@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "Customers";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";    
 }
 
 <!DOCTYPE html>
@@ -35,11 +35,11 @@
             <div class="card total">
                 <h3>
                     <span>
-                        Amount
+                        Amount of Customer
                     </span>
                     <img src="~/assets/total.svg" alt="Image de total">
                 </h3>
-                <p id="totalDisplay">0,00 $</p>
+                <p id="totalDisplay">@Model.Count()</p>
             </div>
         </section>
 
@@ -54,16 +54,12 @@
                 <thead>
                     <tr>
                         <th>Customer Name</th>
+                        <th>Birthdate</th>
                         <th>Membership Type</th>
                         <th>Discount Rate</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    @*@{
-                        var className = Model.Customers.Count() > 5 ? "popular" : null;
-                    }*@
-
                     @if (!Model.Any())
                     {
                         <tr>There are no customers registered yet.</tr>
@@ -74,9 +70,10 @@
                         {
                             <tr>
                                 <td>@Html.ActionLink(customer.Name, "Details", "Customer", new { id = customer.Id }, null)</td>
+                                <td>@customer.BirthDate.Value.ToShortDateString()</td>
                                 <td>@customer.MembershipType.Name</td>
                                 <td>@customer.MembershipType.DiscountRate%</td>
-                            </tr>                        
+                            </tr>
                         }
                     }
 
