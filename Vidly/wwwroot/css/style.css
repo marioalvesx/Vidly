@@ -2,9 +2,10 @@
 :root {
     --dark-blue: #363f5f;
     --green: #49AA26;
-    --light-green: #3dd705;
+    --soft-purple: #e863ff;
     --red: #e92929;
     --white: #f0f2f5;
+    --light-purple: #9c27b0;
 }
 
 * {
@@ -49,12 +50,12 @@ h2 {
 
 /* Links & Buttons ===================== */
 a {
-    color: var(--green);
+    color: var(--light-purple);
     text-decoration: none;
 }
 
 a:hover {
-    color: var(--light-green);
+    color: var(--soft-purple);
 }
 
 button {
