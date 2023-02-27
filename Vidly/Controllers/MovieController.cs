@@ -1,35 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Vidly.Models;
-using Vidly.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using Vidly.Persistence;
 
 namespace Vidly.Controllers
 {
     public class MovieController : Controller
     {
-        public IActionResult Index()
+        private VidlyDbContext _context;
+
+        public MovieController(VidlyDbContext context)
         {
-            var movie = new Movie()
-            { Name = "Shrek!"};
-
-            var customers = new List<Customer> 
-            {                 
-                new Customer { Name = "Customer 1" },
-                new Customer { Name = "Customer 2" }
-            };
-
-            var viewModel = new RandomMovieViewModel
-            { 
-                Movie = movie,
-                Customers = customers
-            };
-
-            return View(viewModel);
+            _context = context;
         }
 
-        public ActionResult Edit(int id)
+        protected override void Dispose(bool disposing)
         {
-            return Content("id = " + id);
+            _context.Dispose();
         }
 
+        public ViewResult Index()
+        {
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
+
+            return View(movies);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+
+            if (movie == null)
+                return NotFound();
+
+            return View(movie);
+        }
     }
 }
