@@ -2,7 +2,7 @@
 
 namespace Vidly.ViewModels
 {
-    public class IndexCustomerViewModel
+    public class IndexCustomer
     {
         public Customer Customer { get; set; }
         public IEnumerable<Customer> Customers { get; set; }

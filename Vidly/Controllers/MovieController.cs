@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Vidly.Persistence;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -20,9 +21,13 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
+            var movies = _context.Movies.Include(m => m.Genre);
+            var viewModel = new IndexMovie
+            {
+                Movies = movies
+            };
 
-            return View(movies);
+            return View(viewModel);
         }
 
         public ActionResult Details(int id)

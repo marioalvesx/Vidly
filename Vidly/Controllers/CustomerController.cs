@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Vidly.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -21,9 +21,13 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            var customers = _context.Customers.Include( c => c.MembershipType ).ToList();
+            var customers = _context.Customers.Include( c => c.MembershipType );
+            var viewModel = new IndexCustomer
+            {
+                Customers = customers
+            };
 
-            return View(customers);
+            return View(viewModel);
         }
 
         public ActionResult Details(int id)

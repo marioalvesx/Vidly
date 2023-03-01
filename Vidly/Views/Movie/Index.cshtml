@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Vidly.Models.Movie>
+﻿@model Vidly.ViewModels.IndexMovie
 
 @{
     ViewData["Title"] = "Random";
@@ -58,13 +58,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(!Model.Any())
+                    @if(!Model.Movies.Any())
                     {
                         <tr>There are no movies registered yet.</tr>
                     }
                     else
                     {
-                        @foreach (var movie in Model)
+                        @foreach (var movie in Model.Movies)
                         {
                             <tr>
                                 <td>@Html.ActionLink(@movie.Name, "Details", "Movie", new { id = movie.Id }, null)</td>
