@@ -14,3 +14,64 @@
     <li>Date added: @String.Format("{0:dddd, MMMM d, yyyy}", Model.AddedDate.ToString("D", ci))</li>
     <li>Number in stock: @Model.NumberInStock</li>
 </ul>
+
+<div class="modal">
+    <div id="form">
+        <h2>@Model.Name</h2>
+        <form action="" onsubmit="Form.submit(event)">
+            <div class="input-group">
+                <label class="sr-only"
+                       for="genre">
+                </label>
+                <input type="text"
+                       id="genre"
+                       name="genre"
+                       readonly
+                       placeholder="Genre: @Model.Genre.Name" />
+            </div>
+
+            <div class="input-group">
+                <label class="sr-only"
+                       for="release">
+                </label>
+                <input type="text"
+                       id="release"
+                       name="release"
+                       readonly
+                       placeholder="Release Date: @String.Format("{0:dddd, MMMM d, yyyy}", Model.ReleaseDate.ToString("D", ci))" />
+
+            </div>
+
+            <div class="input-group">
+                <label class="sr-only"
+                       for="release">
+                </label>
+                <input type="text"
+                       id="added"
+                       name="added"
+                       readonly
+                       placeholder="Date added: @String.Format("{0:dddd, MMMM d, yyyy}", Model.AddedDate.ToString("D", ci))" />
+
+            </div>
+
+            <div class="input-group">
+                <label class="sr-only"
+                       for="release">
+                </label>
+                <input type="text"
+                       id="stock"
+                       name="stock"
+                       readonly
+                       placeholder="Number in stock: @Model.NumberInStock" />
+
+            </div>
+
+            @*<div class="input-group actions">
+            <a onclick="Modal.close()"
+            href="#"
+            class="button cancel">Cancel</a>
+            <button>Save</button>
+            </div>*@
+        </form>
+    </div>
+</div>

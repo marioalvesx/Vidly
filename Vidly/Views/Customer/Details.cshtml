@@ -5,12 +5,63 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name</h2>  
-<ul>
+@*<ul>
     <li>Membership Type: @Model.MembershipType.Name</li>
 
     @if(Model.BirthDate.HasValue)
     {
         <li>Birthdate: @Model.BirthDate.Value.ToShortDateString()</li>   
     }
-</ul>
+</ul>*@
+
+<div class="modal">
+    <div id="form">
+        <h2>@Model.Name</h2>
+        <form action="" onsubmit="Form.submit(event)">
+            <div class="input-group">
+                <label class="sr-only"
+                       for="description">                
+                </label>
+                <input type="text"
+                       id="description"
+                       name="description"
+                       readonly
+                       placeholder="Membership Type: @Model.MembershipType.Name" />
+            </div>
+
+            <div class="input-group">
+                <label class="sr-only"
+                       for="amount">
+                
+                </label>            
+            </div>
+
+            <div class="input-group">
+                <label class="sr-only"
+                       for="date">
+                </label>
+                <input type="text"
+                       id="date"
+                       name="date"
+                       readonly
+                       placeholder="Birthdate: @Model.BirthDate.Value.ToShortDateString()" />
+
+                @*<label class="sr-only"
+                       for="date">Date</label>
+                <input type="string"
+                       id="date"
+                       name="date"
+                       placeholder="
+                        
+                        "
+                       />*@
+            </div>
+            @*<div class="input-group actions">
+                <a onclick="Modal.close()"
+                   href="#"
+                   class="button cancel">Cancel</a>
+                <button>Save</button>
+            </div>*@
+        </form>
+    </div>
+</div>
