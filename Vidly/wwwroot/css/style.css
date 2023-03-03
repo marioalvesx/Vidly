@@ -247,10 +247,10 @@ td.expense {
     z-index: 999;
 }
 
-    .modal-overlay.active {
-        opacity: 1;
-        visibility: visible;
-    }
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
 
 .modal {
     background: #F0F2f5;
@@ -265,9 +265,9 @@ td.expense {
     max-width: 500px;
 }
 
-    #form h2 {
-        margin-top: 0;
-    }
+#form h2 {
+    margin-top: 0;
+}
 
 input {
     border: none;
@@ -280,20 +280,46 @@ input {
     margin-top: 0.8rem;
 }
 
-    .input-group .help {
-        opacity: 0.4;
-    }
+.input-group .help {
+    opacity: 0.4;
+}
 
-    .input-group.actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+.input-group.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .input-group.actions .button,
-        .input-group.actions button {
-            width: 48%;
-        }
+.input-group.actions .button,
+.input-group.actions button {
+    width: 48%;
+}
+
+
+input[type="checkbox"] {
+    /* ...existing styles */
+    font-family: system-ui, sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.1;
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+    width: 1rem;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
 
 
 /* Footer ===================== */
