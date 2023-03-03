@@ -88,27 +88,36 @@
                 @*<form action="" onsubmit="Form.submit(event)">*@
                 @using (Html.BeginForm("Create", "Customers"))
                 {
-                    <div class="input-group">
-                        <label class="sr-only"
+                    @*<div class="input-group">*@
+                        @*<label class="sr-only"
                            for="name">
                             Name
-                        </label>
-                        @*<input type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Name" />*@
-                        @Html.TextBoxFor(model => model.Customer.Name)
-                    </div>
+                        </label>*@
+                        @Html.LabelFor(model => model.Customer.Name)
+                        @Html.TextBoxFor(model => model.Customer.Name, new { @class = "input-group" })
+                    @*</div>*@
 
                     <div class="input-group">
-                        <label class="sr-only"
-                           for="amount">Value</label>
-                        <input type="number"
+                        @Html.LabelFor(model => model.Customer.BirthDate)
+                        @Html.TextBoxFor(model => model.Customer.BirthDate)
+                    </div>
+
+                    @*<div class="input-group">*@
+                        @*<label class="sr-only"
+                           for="amount">Value</label>*@
+                        @*<input type="number"
                            step="0.01"
                            id="amount"
-                           name="amount"
+                           name="amount" 
                            placeholder="0,00" />
-                        <small class="help">Use the signal - (negative) for expenses and , (comma) for decimal digits</small>
+                        <small class="help">Use the signal - (negative) for expenses and , (comma) for decimal digits</small>*@
+                    @*    @Html.LabelFor(model => model.Customer.IsSubscribedToNewsletter)
+                        @Html.CheckBoxFor(model => model.Customer.IsSubscribedToNewsletter)
+                    </div>*@
+                    <div class="checkbox-group">
+                        <label>
+                            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribed to newsletter?
+                        </label>
                     </div>
 
                     <div class="input-group">
