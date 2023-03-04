@@ -2,6 +2,7 @@
 using Vidly.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Vidly.ViewModels;
+using Vidly.Models;
 
 namespace Vidly.Controllers
 {
@@ -22,9 +23,12 @@ namespace Vidly.Controllers
         public ViewResult Index()
         {
             var customers = _context.Customers.Include( c => c.MembershipType );
+            var membershipTypes = _context.MembershipType.ToList();
+            
             var viewModel = new IndexCustomer
             {
-                Customers = customers
+                Customers = customers,
+                MembershipTypes = membershipTypes
             };
 
             return View(viewModel);
@@ -38,6 +42,13 @@ namespace Vidly.Controllers
                 return NotFound();
 
             return View(customer);
-        }            
+        }
+
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            return View();
+        }
+
     }
 }
