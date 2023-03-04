@@ -6,6 +6,7 @@
     --red: #e92929;
     --white: #f0f2f5;
     --light-purple: #9c27b0;
+    --light-green: #47d115;
 }
 
 * {
@@ -89,9 +90,9 @@ button:hover {
     opacity: 0.6;
 }
 
-    .button.cancel:hover {
-        opacity: 1;
-    }
+.button.cancel:hover {
+    opacity: 1;
+}
 
 /* Header ===================== */
 header {
@@ -142,10 +143,10 @@ header {
     margin-top: -8rem;
 }
 
-    #balance h2 {
-        color: white;
-        margin-top: 0;
-    }
+#balance h2 {
+    color: white;
+    margin-top: 0;
+}
 
 /* Cards ===================== */
 .card {
@@ -262,7 +263,7 @@ td.expense {
 
 /* Form ===================== */
 #form {
-    max-width: 500px;
+    width: 500px;
 }
 
 #form h2 {
@@ -295,26 +296,30 @@ input {
     width: 48%;
 }
 
+.checkbox-group {
+    margin-top: 0.8rem;
+}
 
 input[type="checkbox"] {
-    /* ...existing styles */
-    font-family: system-ui, sans-serif;
-    font-size: 3rem;
-    font-weight: bold;
-    line-height: 1.1;
+    position: relative;
+    -webkit-appearance: none;
     display: grid;
-    grid-template-columns: 1em auto;
-    gap: 0.5em;
-    width: 1rem;
+    place-content: center;
+    font: inherit;
+    width: 1.05em;
+    height: 1.05em;
+    border: 0.16em solid #000000;
+    border-radius: 0.15em;
+    transform: scale(0.7);
 }
 
 input[type="checkbox"]::before {
     content: "";
-    width: 0.65em;
-    height: 0.65em;
+    width: 1.10em;
+    height: 1.10em;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--form-control-color);
+    box-shadow: inset 2em 2em #474447;
 }
 
 input[type="checkbox"]:checked::before {
@@ -323,7 +328,7 @@ input[type="checkbox"]:checked::before {
 
 
 /* Footer ===================== */
-footer {
+    footer {
     text-align: center;
     padding: 4rem 0 2rem;
     color: var(--dark-blue);
