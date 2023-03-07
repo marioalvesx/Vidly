@@ -5,17 +5,22 @@
 namespace Vidly.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class AddIsSubscribedToCustomer : Migration
+    public partial class AddGenreTableAndRelations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "IsSubscribedToNewsletter",
-                table: "Customers",
-                type: "bit",
-                nullable: false,
-                defaultValue: false);
+            migrationBuilder.CreateTable(
+                name: "Genres",
+                columns: table => new
+                {
+                    Id = table.Column<byte>(type: "tinyint", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Genres", x => x.Id);
+                });
 
             migrationBuilder.AddColumn<byte>(
                 name: "MembershipTypeId",
@@ -23,20 +28,6 @@ namespace Vidly.Persistence.Migrations
                 type: "tinyint",
                 nullable: false,
                 defaultValue: (byte)0);
-
-            migrationBuilder.CreateTable(
-                name: "MembershipType",
-                columns: table => new
-                {
-                    Id = table.Column<byte>(type: "tinyint", nullable: false),
-                    SignUpFee = table.Column<short>(type: "smallint", nullable: false),
-                    DurationInMonths = table.Column<byte>(type: "tinyint", nullable: false),
-                    DiscountRate = table.Column<byte>(type: "tinyint", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MembershipType", x => x.Id);
-                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_MembershipTypeId",
@@ -55,19 +46,15 @@ namespace Vidly.Persistence.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Genres");
+
             migrationBuilder.DropForeignKey(
                 name: "FK_Customers_MembershipType_MembershipTypeId",
                 table: "Customers");
 
-            migrationBuilder.DropTable(
-                name: "MembershipType");
-
             migrationBuilder.DropIndex(
                 name: "IX_Customers_MembershipTypeId",
-                table: "Customers");
-
-            migrationBuilder.DropColumn(
-                name: "IsSubscribedToNewsletter",
                 table: "Customers");
 
             migrationBuilder.DropColumn(

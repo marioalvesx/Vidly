@@ -53,11 +53,8 @@ namespace Vidly.Persistence.Migrations
 
             modelBuilder.Entity("Vidly.Models.Genre", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -105,9 +102,6 @@ namespace Vidly.Persistence.Migrations
                     b.Property<byte>("GenreId")
                         .HasColumnType("tinyint");
 
-                    b.Property<int>("GenreId1")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -121,7 +115,7 @@ namespace Vidly.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GenreId1");
+                    b.HasIndex("GenreId");
 
                     b.ToTable("Movies");
                 });
@@ -141,7 +135,7 @@ namespace Vidly.Persistence.Migrations
                 {
                     b.HasOne("Vidly.Models.Genre", "Genre")
                         .WithMany()
-                        .HasForeignKey("GenreId1")
+                        .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
