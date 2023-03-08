@@ -1,7 +1,7 @@
 ﻿@model Vidly.ViewModels.IndexMovie
 
 @{
-    ViewData["Title"] = "Random";
+    ViewData["Title"] = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -48,9 +48,13 @@
 
                 <a href="#"
                    onclick="Modal.open()"
-                   class="button new">+ New Movie</a>
+                   class="button new">+ New Movie</a><br />
 
                 <table id="data-table">
+                    @if (!Model.Movies.Any())
+                    {
+                        <tr>There are no movies registered yet.</tr>
+                    } else {
                     <thead>
                         <tr>
                             <th>Movie Name</th>
@@ -58,23 +62,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if(!Model.Movies.Any())
+                        @foreach (var movie in Model.Movies)
                         {
-                            <tr>There are no movies registered yet.</tr>
-                        }
-                        else
-                        {
-                            @foreach (var movie in Model.Movies)
-                            {
-                                <tr>
-                                    <td>@Html.ActionLink(@movie.Name, "Details", "Movie", new { id = movie.Id }, null)</td>
-                                    <td>@movie.Genre.Name</td>
-                                </tr>                        
-                            }
-                        }
-                
+                            <tr>
+                                <td>@Html.ActionLink(@movie.Name, "Details", "Movie", new { id = movie.Id }, null)</td>
+                                @*<td>@movie.Genre.Name</td>*@
+                            </tr>                        
+                        }            
                     </tbody>
-                </table>
+                }
+            </table>
             </section>
         </main>
 

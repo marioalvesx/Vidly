@@ -46,24 +46,22 @@
             <h2 class="sr-only">Locations</h2>            
             <a href="#"
                onclick="Modal.open()"
-               class="button new">+ New Customer</a>
+               class="button new">+ New Customer</a><br />
 
             <table id="data-table">
-                <thead>
-                    <tr>
-                        <th>Customer Name</th>
-                        <th>Birthdate</th>
-                        <th>Membership Type</th>
-                        <th>Discount Rate</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (!Model.Customers.Any())
-                    {
-                        <tr>There are no customers registered yet.</tr>
-                    }
-                    else
-                    {
+                @if (!Model.Customers.Any())
+                {                    
+                    <tr>There are no customers registered yet.</tr>
+                } else {
+                    <thead>                    
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Birthdate</th>
+                            <th>Membership Type</th>
+                            <th>Discount Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>                                       
                         @foreach (var customer in Model.Customers)
                         {
                             <tr>
@@ -72,10 +70,9 @@
                                 <td>@customer.MembershipType.Name</td>
                                 <td>@customer.MembershipType.DiscountRate%</td>
                             </tr>
-                        }
-                    }
-
-                </tbody>
+                        }                    
+                    </tbody>
+                }
             </table>
         </section>
     </main>
@@ -84,18 +81,13 @@
     <div class="modal-overlay">
         <div class="modal">
             <div id="form">
-                <h2>New Customer</h2>                
-                @*<form action="" onsubmit="Form.submit(event)">*@
-                @using (Html.BeginForm("Create", "Customers"))
+                <h2>New Customer</h2>                                
+                @using (Html.BeginForm("Create", "Customer"))
                 {
-                    @*<div class="input-group">*@
-                        @*<label class="sr-only"
-                           for="name">
-                            Name
-                        </label>*@
+                    <div class="input-group">                        
                         @Html.LabelFor(model => model.Customer.Name)
-                        @Html.TextBoxFor(model => model.Customer.Name, new { @class = "input-group" })
-                    @*</div>*@
+                        @Html.TextBoxFor(model => model.Customer.Name)
+                    </div>
 
                     <div class="input-group">
                         @Html.LabelFor(model => model.Customer.BirthDate)
@@ -115,13 +107,12 @@
                     </div>
 
                     <div class="input-group actions">
-                        <a onclick="Modal.close()"
-                       href="#"
-                       class="button cancel">Cancel</a>
+                       <a onclick="Modal.close()"
+                           href="#"
+                           class="button cancel">Cancel</a>
                         <button type="submit">Save</button>
                     </div>
                 }
-                @*</form>*@
             </div>
         </div>
     </div>
