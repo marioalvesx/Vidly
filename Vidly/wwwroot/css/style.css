@@ -157,25 +157,25 @@ header {
     color: var(--dark-blue);
 }
 
-    .card h3 {
-        font-weight: normal;
-        font-size: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+.card h3 {
+    font-weight: normal;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    .card p {
-        font-size: 2rem;
-        line-height: 3rem;
-        white-space: nowrap;
-        margin-top: 1rem;
-    }
+.card p {
+    font-size: 2rem;
+    line-height: 3rem;
+    white-space: nowrap;
+    margin-top: 1rem;
+}
 
-    .card.total {
-        background: var(--green);
-        color: white;
-    }
+.card.total {
+    background: var(--green);
+    color: white;
+}
 
 /* Table ===================== */
 #transaction {
@@ -315,8 +315,11 @@ input[type="checkbox"] {
 
 input[type="checkbox"]::before {
     content: "";
-    width: 1.10em;
-    height: 1.10em;
+    width: 1.2em;
+    height: 1.2em;
+    position: absolute;
+    left: 0.19em;
+    top: 0.19em;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
     box-shadow: inset 2em 2em #474447;
@@ -326,9 +329,16 @@ input[type="checkbox"]:checked::before {
     transform: scale(1);
 }
 
+select, .select-items {
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
+    width: 100%;
+}
+
 
 /* Footer ===================== */
-    footer {
+footer {
     text-align: center;
     padding: 4rem 0 2rem;
     color: var(--dark-blue);

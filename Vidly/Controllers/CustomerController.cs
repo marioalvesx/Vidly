@@ -23,7 +23,7 @@ namespace Vidly.Controllers
         public ViewResult Index()
         {
             var customers = _context.Customers.Include( c => c.MembershipType );
-            var membershipTypes = _context.MembershipType.ToList();
+            var membershipTypes = _context.MembershipTypes.ToList();
             
             var viewModel = new IndexCustomer
             {
@@ -50,7 +50,7 @@ namespace Vidly.Controllers
             _context.Customers.Add(customer);
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Customers");
+            return RedirectToAction("Index", "Customer");
         }
 
     }
