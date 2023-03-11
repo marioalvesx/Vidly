@@ -53,5 +53,11 @@ namespace Vidly.Controllers
             return RedirectToAction("Index", "Customer");
         }
 
+        [HttpPut]
+        public ActionResult Update(Customer customer)
+        {
+            //...
+        }
+
     }
 }
