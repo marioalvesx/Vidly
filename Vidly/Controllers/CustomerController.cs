@@ -22,9 +22,9 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            var customers = _context.Customers.Include( c => c.MembershipType );
+            var customers = _context.Customers.Include(c => c.MembershipType);
             var membershipTypes = _context.MembershipTypes.ToList();
-            
+
             var viewModel = new IndexCustomer
             {
                 Customers = customers,
@@ -53,10 +53,20 @@ namespace Vidly.Controllers
             return RedirectToAction("Index", "Customer");
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public ActionResult Update(Customer customer)
         {
-            //...
+            if(customer.Id != 0)
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                customerInDb.Name = customer.Name;
+                customerInDb.BirthDate = customer.BirthDate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+            } // Apply DTO here.
+
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customers");
         }
 
     }
